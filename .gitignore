@@ -1,0 +1,12 @@
+# FireShell
+# http://getfireshell.com
+# @author Todd Motto
+
+node_modules
+psd
+.DS_Store
+.tmp
+.sass-cache
+.idea
+.sass-cache
+package.json

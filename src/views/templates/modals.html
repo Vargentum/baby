@@ -1,0 +1,92 @@
+<ul>
+  <li><a class="link-pseudo" href="#" data-reveal-id="callback-modal">Заказать звонок</a></li>
+  <li><a class="link-pseudo" href="#" data-reveal-id="register-modal">Регистрация</a></li>
+  <li><a class="link-pseudo" href="#" data-reveal-id="enter-modal">Вход</a></li>
+</ul>
+
+
+<div class="reveal-modal" id="callback-modal">
+  <header class="__header">
+    <h1 class="__title">Заказать звонок</h1>
+  </header>
+  <div class="__main">
+    <div class="l-jLine">
+      <label>
+        <span>Имя</span>
+        <input type="text"/>
+      </label>
+      <label>
+        <span>Телефон</span>
+        <input type="tel"/>
+      </label>
+    </div>
+    <footer class="btn-wrap">
+      <button class="btn">Перезвонить мне</button>
+    </footer>
+  </div>
+</div>
+
+<div class="reveal-modal" id="register-modal">
+  <header class="__header  l-jLine--middle">
+    <h1 class="__title">Регистрация</h1>
+    <a href="#" class="link-pseudo">Вход</a>
+  </header>
+  <div class="__main">
+    <div class="l-jLine">
+      <label>
+        <span>Имя</span>
+        <input type="text"/>
+      </label>
+      <label>
+        <span>Телефон</span>
+        <input type="tel" required/>
+      </label>
+    </div>
+    <label>
+      <span>Логин (e-mail)</span>
+      <input type="email" required/>
+    </label>
+    <div class="l-jLine">
+      <label>
+        <span>Пароль</span>
+        <input type="password" required/>
+      </label>
+      <label>
+        <span>Повторите парооль</span>
+        <input type="password" required/>
+      </label>
+    </div>
+    <footer class="btn-wrap  l-jLine">
+      <label><small>Все поля обязательны для заполнения</small></label>
+      <span></span>
+      <label><button class="btn">Зарегистрироваться</button></label>
+    </footer>
+  </div>
+</div>
+
+<div class="reveal-modal" id="enter-modal">
+  <header class="__header  l-jLine--middle">
+    <h1 class="__title">Вход</h1>
+    <a href="#" class="link-pseudo">Регистрация</a>
+  </header>
+  <div class="__main">
+    <div class="l-jLine">
+      <label>
+        <span>Логин (e-mail)</span>
+        <input type="email" required/>
+      </label>
+      <label>
+        <span>Пароль</span>
+        <input type="password" required/>
+      </label>
+    </div>
+    <footer class="btn-wrap  btn-wrap--enter-modal  l-jLine">
+      <label class="l-hLine--middle">
+        <input type="checkbox"/>
+        <span>Запомнить меня</span>
+      </label>
+      <a href="#">Я забыл пароль</a>
+      <button class="btn">Войти</button>
+    </footer>
+  </div>
+</div>

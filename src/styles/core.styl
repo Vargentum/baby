@@ -1,0 +1,1512 @@
+@import "base/settings"
+@import "base/mixins"
+@import "base/assets"
+
+@import "plugins-default-styling/custom-scroll"
+
+
+/*------------------------------------*\
+  Styling for default UI elements
+\*------------------------------------*/
+
+input, textarea, .selectBox-dropdown
+  color $inputColor
+  border-radius: 2px;
+  padding-left: 10px
+  padding-right: 10px
+  border: 1px solid #b6bfb9;
+  placeholder $inputColor
+  background-color: #fff;
+  height: $inputHeight
+  box-shadow: inset 0 3px 0 rgba(0,0,0,.09);
+  &.invalid,&.is-invalid
+    border: 1px solid #e34f59;
+
+
+
+textarea
+  display block
+  width: 100%;
+  height: 80px;
+
+input[type=radio],
+input[type=checkbox]
+  size 14px
+  box-shadow none
+  padding: 0
+
+textarea
+  vertical-align: top
+  resize: none
+
+button
+  border: none
+  background-color: transparent
+  cursor pointer
+  &:hover,&:focus,&:active
+    transition none
+
+
+label
+  display block
+  margin-bottom: $spacer;
+  span
+    display block
+    margin-bottom: 2px
+    font-size: 13px
+    color: $servColor;
+
+input[type=checkbox],
+input[type=radio]
+  size 14px
+  background-color: #fff
+
+
+a
+  color: $linkColor
+  @extend .link-decor
+  &:hover
+    color $hoveredLinkColor
+  &:focus
+    color $focusedLinkColor
+    outline: none
+  &:active
+    color $activeLinkColor
+  &:visited
+    color $visitedLinkColor
+
+
+body
+  background-color #cdf1ff
+  //gradient
+  &:before
+    pb(left top)
+    size 100% 856px
+    background: linear-gradient(to bottom, #e0f0e1 0%,#f0f0c8 21%,#f5efc0 35%,#ecf0ce 51%,#d2f1f7 85%,#cdf1ff 96%,#cdf1ff 100%);
+  //image background
+  &:after
+    pb(left 50% top)
+    transform translateX(-50%)
+    size 1500px 1170px
+    background url('../img/bg-main.png') 50% 0 no-repeat
+
+
+
+.l-page
+  min-height 100%
+  min-width: 960px
+  max-width 1100px
+  position relative
+  margin auto
+  z-index: 1
+  background-color #fff
+  box-shadow: 0 0 25px rgba(23,42,54,.2);
+
+
+
+/*------------------------------------*\
+    Custom UI elements
+\*------------------------------------*/
+.tab-nav
+  hLine()
+  margin: ($spacer * 3) 0 ($spacer * 2);
+  a
+    color: #373737;
+    font-size: 14px;
+    text-decoration: none;
+    border: 1px solid #99a1a1;
+    padding: 5px 15px 3px;
+    background-color: #fff
+    transition background-color .3s
+    text-transform: uppercase
+    margin-right: 3px
+    &.is-active
+      text-shadow  1px 0 0 @color
+      background-color: #e1e1e1;
+
+
+
+.tab-pane-wrap
+  overflow hidden
+  position relative
+
+.tab-pane
+  absolute left top
+  opacity: 0;
+  .csstransforms &
+    transition transform .75s cubic-bezier(0.23, 1, 0.32, 1)
+    transform translateY(-100%)
+  .no-csstransforms &
+    display none
+
+  &.is-active
+    position relative
+    opacity: 1
+    .csstransforms &
+      transform translateY(0)
+
+    .no-csstransforms &
+      display block
+
+
+
+
+
+.ui-fluid-paddings
+  /*fluid-prop(padding-left, 70px, 1100px)*/
+  /*fluid-prop(padding-right, 70px, 1100px)*/
+  padding-left: 80px
+  padding-right:80px
+
+.ui-title
+  font: 600 30px $brandFamily
+  color $brandColor
+  margin-bottom: 10px
+
+.ui-divider
+  position relative
+  &:before
+    pb()
+    width: 100%
+    height: 7px
+    ctr(top, @height)
+    left 0
+    background-image data('../img/title-divider.png')
+
+.ui-title--divider
+  @extend .ui-divider
+
+  .ui-title
+    position relative
+    display inline-block
+    background-color #fff
+    padding-right: 15px
+    margin-bottom: 0
+
+
+.ui-island
+  margin-bottom: 25px
+
+.ui-price
+  white-space nowrap
+  &:after
+    content ' руб.'
+
+    .shopcart th &
+      content ', руб.'
+      font-style italic
+
+
+.ui-columnized-2
+  column-count 2
+  column-gap 80px
+
+
+.arrow-after
+  @extend .link-decor-rvs
+  &:after
+    pi()
+    size 12px 10px
+    img('icon-arrow-rt.png')
+    margin: 0 5px;
+                              
+.link-pseudo
+  cursor: pointer
+  text-decoration: none;
+  color $linkColor
+  border-bottom: 1px dotted @color
+  &:hover,&:focus
+    color: $brandColor;
+    border-bottom-color @color
+
+
+.link-disabled
+  cursor default
+  text-decoration: none;
+  link-1: $baseFontColor;
+  &:hover,&:focus
+    text-decoration: none;
+
+
+.btn
+  border: #989898;
+  border-radius: 3px;
+  background-color: #cfcfcf;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15), inset 0 0 0 1px rgba(255,255,255,.5);
+  background-image: linear-gradient(top, #feffff -25%, rgba(255,255,255,0) 125%);
+  link-1: $titleColor;
+  font-size: 14px
+  padding: 7px 10px
+  text-decoration: none;
+  cursor pointer
+  transition box-shadow .4s
+  &:hover,&:focus
+    box-shadow: none
+
+  &:active
+    box-shadow: inset 0 4px 5px rgba(0,0,0,.17);
+    background-image: linear-gradient(bottom, #feffff -25%, rgba(255,255,255,0) 125%);
+
+
+.btn-go-back
+  @extend .btn
+  &:before
+    pi(middle)
+    size 9px 16px
+    img('icon-arrow-lt.png')
+    margin-right: 7px
+
+
+.btn-3d
+  border: #cf6b69;
+  cursor pointer
+  background-color: #d55355;
+  box-shadow: 0 3px 0 #bf5553, inset 0 0 13px rgba(255,255,190,.1);
+  background-image: linear-gradient(top, rgba(255,255,255,.69) 0%, rgba(255,255,255,0) 100%);
+  padding: 9px 45px 7px
+  color: #fff;
+  link-1 #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition all .4s
+  &:hover,&:focus
+    outline none
+    border-color #dd8483;
+    background-color: #ef6c6d;
+    box-shadow: 0 3px 0 #df6564, inset 0 0 13px rgba(255,255,190,.1);
+  &:active
+    border-color #cf6b69;
+    background-color: #d55355;
+    box-shadow: inset 0 4px 9px rgba(0,0,0,.3), inset 0 0 13px rgba(255,255,190,.1);
+    transform translateY(3px)
+
+
+.btn-3d-strict
+  border: #989898;
+  border-radius: 3px
+  background-color: #cfcfcf;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15), inset 0 0 0 1px rgba(255,255,255,.5);
+  background-image: linear-gradient(top, #feffff -25%, rgba(255,255,255,0) 125%);
+  padding: 5px 40px 7px;
+  color: #27465b;
+  font-size: 14px;
+  font-weight: 700;
+
+  &:hover,&:focus
+    border: #b2b2b2;
+    box-shadow: 0 2px 6px rgba(0,0,0,.15), inset 0 0 0 1px rgba(255,255,255,.5);
+    background-image: linear-gradient(top, #feffff -25%, rgba(255,255,255,0) 125%);
+
+  &:active
+    border #989898;
+    box-shadow: inset 0 4px 5px rgba(0,0,0,.17);
+    background-image: linear-gradient(bottom, #feffff -25%, rgba(255,255,255,0) 125%);
+
+
+
+.is-shown
+  visibility visible !important
+  position relative !important
+
+.is-hidden
+  visibility hidden !important
+  position absolute !important
+
+.is-error
+  small&
+    color: #e34f59 !important
+    font-size: 11px !important
+    position absolute !important
+
+  input&
+    border #e34f59 !important
+
+btm-shadow()
+  position relative
+  &:before
+    pb(left top 100%)
+    size 100% 9px
+    z-index: -1;
+    img(arguments[0])
+    margin-top: -1px
+
+
+.accent-input-wrapper
+  display block
+  hLine middle
+  margin: ($spacer * 2) 0 ($spacer / 2)
+  color: $brandColor
+  font-size: 14px;
+  font-weight: 700
+  cursor pointer
+
+  input[type=radio],
+  input[type=checkbox]
+    margin: 0 5px 3px 0
+
+
+
+/*------------------------------------*\
+    HEADER
+\*------------------------------------*/
+.l-header
+  position: relative
+
+.l-header__inner
+  @extend .ui-fluid-paddings
+  jLine middle
+
+.logo
+  text-decoration: none
+  .__hidden
+    visibility hidden
+    position absolute
+
+.l-header__ctr
+  margin-bottom: $spacer
+  jLine float
+  width: 380px;
+
+.phone
+  width: 210px
+  font-size: 22px
+  font-weight 700
+  color: $titleColor;
+
+.enter-site
+  position relative
+  &:before
+    pb(top 50% right 100%)
+    width: 10px;
+    height: 11px;
+    ctr(top, @height)
+    img('icon-lock.png')
+    margin-right: 5px
+
+
+.site-search
+  position relative
+  width: 380px
+  placeholder($titleColor)
+
+  .l-footer &
+    placeholder(#636363)
+
+  .__field
+    width: 100%
+    padding-right: 30px;
+
+    .l-header &
+      font-size: 14px
+      box-shadow: inset 0 3px 0 rgba(0,0,0,.09);
+
+    .l-footer &
+      background-color transparent
+
+  .__submit
+    absolute right 10px top 50%
+    img('search-btn.png')
+    width: 16px
+    height @width
+    ctr(top, @height)
+    right 10px
+
+
+
+.nav
+  @extend .ui-fluid-paddings
+  jLine()
+  position relative
+  margin: 10px 0
+  min-height 77px
+  color: #fff;
+  font-size: 17px
+  font-weight: 600
+  //ribbon
+  &:before
+    pb()
+    width: 1194px
+    height: 77px
+    ctr(left, @width)
+    img('nav-ribbon.png','0 50%')
+    z-index: -1;
+
+  a
+    @extend .link-decor-rvs
+    color: #fff;
+    padding: 19px 0
+
+
+.shopcart--micro
+  size 210px 137px
+  img('shopcart-micro-bg.png','50% 0')
+  padding: 10px 25px
+  color: #fff
+  font-size: 14px
+
+  .__accent
+    font-size: 17px
+    font-weight 600
+
+  .__submit
+    @extend .btn
+    display block
+    width: 100%
+    margin-top: 5px
+    text-align: center;
+    font-weight 700
+
+
+
+.user-authorised
+  width: 170px
+  font-size: 12px
+  color: #27465b;
+  &>*
+    margin: 3px 0
+
+  i
+    display inline-block
+    size 12px 11px
+    img('user-authorised.png')
+
+  b
+    font-size: 14px
+    font-weight: 700
+
+/*------------------------------------*\
+    CONTENT Zone
+\*------------------------------------*/
+.l-main
+  @extend .ui-fluid-paddings
+  jLine top
+  margin-bottom: 50px
+
+
+.l-main__primaryColumn
+  width: $main-column-width
+
+.page-title
+  color: $titleColor;
+  font-size: 26px;
+  font-weight: 600;
+  margin: 20px 0
+
+.bread-crumbs
+  hLine()
+  margin-bottom: 25px
+  font-size: 13px
+
+  a
+    color: $servColor
+    position relative
+    margin-right: 22px
+
+    &:before
+      pb()
+      width: 16px
+      height: 7px
+      ctr(top, @height)
+      left 100%
+      margin-left: 5px
+      img('crumbs-divider.png')
+
+    &:last-child
+      cursor default
+      color: #333;
+      &:before
+        display none
+      &:hover,&:focus
+        text-decoration none
+
+
+
+
+
+.wswg
+  &>*
+    display block
+    margin-bottom: $spacer;
+
+  p
+    margin: $spacer 0;
+
+  h1
+    color: #27465b;
+    font-size: 26px;
+    font-weight: bold;
+
+  h2
+    color: #27465b;
+    font-size: 17px;
+    font-weight: 700
+    margin: ($spacer * 1.75) 0 ($spacer * 1.25)
+
+  h3
+    color: #373737;
+    font-weight: 700;
+    margin-bottom: $spacer * 1.5;
+
+
+  ul
+    list-style-type disc
+    padding-left: $spacer
+
+  ol
+    list-style-type decimal
+    padding-left: $spacer
+
+  li
+    margin-bottom: ($spacer / 2);
+
+  small
+    color: $servColor
+    font-size: 13px;
+
+  hr
+    height: 7px;
+    border none
+    background: none
+    margin ($spacer * 2) 0
+    @extend .ui-divider
+
+
+.img--lt
+  float left
+  margin: 0 15px 10px 0;
+
+.img--rt
+  float right
+  margin: 0 0 10px 15px;
+
+.img--full
+  size: $main-column-width auto
+  margin-bottom: $spacer
+
+.list-reset
+  reset-box-model()
+  list-style-type none
+  list-style-image none
+
+ul.list-reset, ul.reset-list,
+ol.list-reset, ol.reset-list
+  @extend .list-reset
+
+/*------------------------------------*\
+    SIDEBAR
+\*------------------------------------*/
+.l-main__secondaryColumn
+  width: $sidebar-width
+  padding-bottom: 50px
+
+.catalog
+  font-size: 14px
+  line-height: 1;
+  a
+    text-decoration: none;
+    color: #27465b
+
+  &>li
+    position relative
+    border-bottom 1px solid #d5d5d5
+    //active item
+    &.is-active
+      &>a
+        color $brandColor
+        text-shadow 0 1px solid @color
+        //change star color
+        &:before
+          background-image data('../img/catalog-item-active.png')
+        &:hover,&:focus
+          text-decoration: none;
+
+      ul
+        height auto
+
+  &>li>a
+    display block
+    position relative
+    padding: 13px 20px
+    //star icon
+    &:before
+      pb()
+      width: 10px
+      height: 9px
+      ctr(top, @height)
+      left 0
+      img('catalog-item.png')
+    &:hover:before
+      background-image data('../img/catalog-item-active.png')
+
+  ul
+    padding: 0 20px
+    height 0
+    overflow hidden
+    transition height .4s
+
+    a
+      display block
+      margin-bottom: 15px
+      font-size: 13px
+      color #373737
+      &:hover,&:focus
+        color $brandColor
+
+
+
+
+
+.search-label
+  position relative
+  $itemWidth = 195px
+
+  .__searchBox
+    width: $itemWidth
+    border: #b6bfb9;
+    border-radius: 2px;
+    background-color: #f7f7f7;
+    box-shadow: inset 0 3px 0 rgba(0,0,0,.09);
+    margin-bottom: 10px
+
+  .js-scroll
+    height 410px
+    overflow auto
+    position relative
+    &:before
+      pb(left top)
+      size $itemWidth @height
+      border: #b6bfb9;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      box-shadow: inset 0 0 8px rgba(0,0,0,.22);
+
+  .__results
+    font-size: 14px
+    a
+      display block
+      text-decoration: none;
+      ellipsis()
+      padding: 4px 10px
+      &:hover,&:focus
+        background-color rgba(0,0,0,.08)
+
+    li:first-child a
+      margin-top: 0
+      padding-top: 8px
+      border-radius 5px 5px 0 0
+
+    li:last-child a
+      margin-bottom: 0
+      padding-bottom: 8px
+      border-right: 0 0 5px 5px;
+
+
+.article
+  margin-bottom: 25px
+  font-size: 12px
+  color: #666;
+  &:not(.article--preview)
+    li:last-child &
+      margin-bottom: 50px
+
+
+  .__pubdate
+    font-weight: 600;
+    color: $titleColor;
+
+  .__title
+    font-size: 14px
+    line-height: 1.3;
+    margin: 5px 0 6px
+    a
+      @extend .link-decor-rvs
+
+  &.article--preview
+    margin-bottom: 15px
+
+    .__title
+      margin: 2px 0 3px;
+      @extend .link-decor
+
+
+
+/*------------------------------------*\
+    FOOTER
+\*------------------------------------*/
+.l-footer
+  position: relative
+  background-color #e5e5e5
+  color $titleColor
+  padding-top: 30px
+  padding-bottom: 25px
+  @extend .ui-fluid-paddings
+
+  &>*:first-child
+    margin-bottom: 20px
+
+  a
+    color: $titleColor;
+
+
+
+.footer-section
+  columns-width = 240px, 270px, 210px, 220px
+  for $i in 1..4
+    &:nth-child({$i}n)
+      width: columns-width[$i - 1]
+
+  li, dt, dd
+    margin-bottom: 10px
+
+  dl
+    clearfix()
+
+  dt
+    float left
+    margin-right: 5px
+    color: #4a6c74
+
+  .__title
+    font 20px $brandFamily
+    margin-bottom: 15px
+
+
+.social
+  hLine()
+  .__unit
+    hide-text()
+    display block
+    margin: 0 8px
+    size 29px
+    background-color #fff
+    transition background-color .4s
+    &:hover,&:focus
+      background-color lighten($linkColor, 50%)
+
+  for $i in fb vk
+    .__unit--{$i}
+      img('social-'+$i+'.png')
+
+/*set explicit width to move facebook button according to psd*/
+.copy
+  width: 180px
+
+/*------------------------------------*\
+    Template: MAIN page
+\*------------------------------------*/
+#slider
+  position relative
+  margin-bottom: 25px
+  btm-shadow('slider-shadow.png')
+
+
+.site-about
+  position relative
+  .__title
+    color: $titleColor;
+    font: 300 30px $brandFamily
+    margin-bottom: 15px
+    b
+      font-weight 400
+
+
+.product
+  font-size: 14px
+
+  .product-list &
+    width: 220px
+    margin: 15px 0 15px 20px
+    border: #cbcbcb;
+    border-radius: 3px 3px 0 0;
+    text-align: center
+
+  //if error occured
+  &.error
+    background-color #f9dcde !important
+
+
+  .__photo
+    size 100% 218px
+    img
+      display block
+      size 100%
+
+    .shopcart &
+      size 80px
+      border #cbcbcb
+
+  .__content
+    padding: 5px 5px 0
+    a
+      @extend .link-decor-rvs
+
+    .shopcart &
+      padding: 0
+      width: 180px
+
+  .__consists
+    color: $servColor
+    &:before
+      content 'Состав:'
+
+  .__price
+    color: $titleColor
+    font-size: 18px;
+    font-weight: 700
+    margin-bottom: 3px
+
+  .__price-for-authorized-client
+    margin: 5px 0 10px
+    font-size: 13px
+    p
+      margin: 3px 0
+
+  .__old-price
+    color: $servColor
+
+  .__discount
+    color: $brandColor;
+
+  .__buy
+    @extend .btn
+    border none
+    border-radius 0
+    border-top: 1px solid #cbcbcb
+    color: #010101
+    font-size: 11px
+    font-weight: 600
+    text-shadow: 0 1px 0 rgba(255,255,255,.5)
+    text-transform: uppercase
+    &:before
+      pi(middle)
+      size 16px 15px
+      img('icon-cart.png')
+      margin-right: 5px
+      margin-top: -3px
+
+  .__delete
+    @extend .btn
+    size 26px
+    border-radius 0
+    position relative
+    &:before
+      pb(left top)
+      size 100%
+      img('icon-delete.png')
+
+
+.product-list
+  hLine(top)
+  margin-left: -20px
+
+
+/*------------------------------------*\
+    Template: CATALOG
+\*------------------------------------*/
+.catalog-category
+  @extend .product
+  border none
+  color: $servColor
+
+  .__photo
+    size 220px
+    border #ccc
+
+  .__title
+    margin: 15px 0 0
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    a
+      @extend .link-decor
+
+
+.product-filter
+  font-size: 14px
+  padding-bottom: 20px
+  margin-bottom:  20px
+  @extend .ui-divider
+  //move divider to bottom
+  &:before
+    top 100%
+    transform translateY(0)
+    margin-top: 0
+
+  .__list
+    hLine()
+
+    li
+      margin-left: 15px
+
+    a.is-active
+      @extend .link-disabled
+
+
+
+.product-size
+  display block
+  border: #cfcfcf;
+  border-radius: 3px;
+  background-color: #ddd;
+  background-image: linear-gradient(top, #feffff -25%, rgba(255,255,255,0) 125%);
+  size 30px
+  line-height: 29px;
+  text-align: center
+  font-size: 13px;
+  link-1: $titleColor
+  text-decoration: none;
+  transition background-color .4s
+  &:hover,&:focus
+    background-color: #f3f3f3;
+
+  &.is-active
+    border none
+    background-color: #ef8175;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,.2);
+    background-image: linear-gradient(bottom, #feffff -25%, rgba(255,255,255,0) 125%);
+    color #fff
+
+  .product-filter &
+    margin-top: 10px
+    margin-bottom: 20px
+
+
+
+.pagination
+  jLine(middle)
+  font-size: 14px
+  padding-top: 20px
+  margin:  25px 0
+  @extend .ui-divider
+  //move divider to top
+  &:before
+    top auto
+    bottom: 100%;
+    transform translateY(0)
+    margin-top: 0
+
+  .__list
+    hLine()
+    li
+      margin: 0 13px
+
+    a.is-active
+      @extend .link-disabled
+
+
+  .__move-up
+    &:after
+      pi(middle)
+      size 11px 10px
+      img('icon-arrow-up.png')
+      margin-left: 5px
+
+  .__divider
+    margin: 0 5px
+
+/*------------------------------------*\
+    Template: SHOPCART
+\*------------------------------------*/
+.shopcart
+  $border = 1px solid #bcbcbc
+  font-size: 14px
+
+  table
+    width: 100%
+    border-collapse collapse
+    btm-shadow('shopcart-shadow.png')
+
+  th
+    background-color: #e8e8e8;
+    background-image: linear-gradient(top, #fff 0%, rgba(255,255,255,0) 100%);
+    padding: 10px 20px
+    border-top $border
+    border-bottom none
+    &:first-child
+      border-left $border
+    &:last-child
+      border-right $border
+
+  tbody td
+    padding: 20px
+    position relative
+    vertical-align: middle;
+    border-top: $border
+    &:first-child
+      border-left $border
+    &:last-child
+      border-right $border
+    /*&:before
+      pb(left top)
+      size 100% 6px
+      background: linear-gradient(to bottom, rgba(217,217,217,1) 0%,rgba(240,240,240,0.8) 20%,rgba(245,245,245,0.6) 40%,rgba(252,252,252,0) 100%);*/
+
+  b
+    color: #373737;
+    font-size: 14px;
+    font-weight: 700;
+
+  .__footer
+    background-color: #df615d;
+    background-image: linear-gradient(top, rgba(255,255,255,.24) 0%, rgba(255,255,255,0) 100%);
+    border @background-color
+    padding: 10px 40px
+    text-align: right;
+    color: #fff;
+    font-size: 13px
+
+  .__total
+    display block
+    font-weight 700
+    font-size: 24px
+    margin-top: 5px
+    &:before
+      content 'Итого: '
+
+  .__errorsDescription
+    padding: 15px 0 10px
+    line-height: 1.6;
+    font-weight 700
+    color: $brandColor;
+
+
+.shopcart__errorsDescription
+  padding: 10px;
+
+.input-counter
+  display inline-block
+  margin-top: 5px
+  position relative
+  padding-right: 20px
+  font-size: 13px
+  color: #999;
+  input
+    width: 50px
+    padding-right: 7px
+    .error &
+      background-color: #f7cbce;
+      box-shadow: inset 0 3px 0 rgba(0,0,0,.09);
+      color: $brandColor;
+
+
+.input-counter__control
+  position absolute
+  right 0
+  size 10px 5px
+  font: 0/0 serif;
+  cursor pointer
+
+.input-counter__control--inc
+  @extend .input-counter__control
+  img('counter-inc.png')
+  bottom 25px
+
+.input-counter__control--dec
+  @extend .input-counter__control
+  img('counter-dec.png')
+  bottom 3px
+
+
+/*------------------------------------*\
+    Template: Product
+\*------------------------------------*/
+.product-full
+  @extend .product
+
+  .__header
+    width: 300px;
+    .flexbox &
+      display flex
+      flex-direction column
+      justify-content space-between
+
+  .__title
+    color: #27465b;
+    font-size: 26px;
+    line-height: 1.2
+    font-weight: bold;
+    margin-bottom: 20px
+
+  .__details
+    text-transform: uppercase;
+    li
+      margin-bottom: 10px;
+
+  .__main
+    .flexbox &
+      display flex
+      align-items stretch
+      justify-content space-between
+    .no-flexbox &
+      jLine float
+
+  .btn-3d
+    color #fff
+    &:before
+      pi(middle)
+      size 16px 15px
+      margin-right: 10px
+      img('icon-cart-white.png')
+
+  .__productCounter
+    width: 70px
+    margin-right: 5px
+
+#gallery
+  .__slides
+    position relative
+    size 385px
+    margin-bottom: 15px
+    li
+      absolute left top
+
+  .__thumbs
+    hLine()
+    margin-left: -15px
+    li
+      size 85px
+      margin-left: 15px
+
+  img
+    display block
+    size 100%
+    border #ccc
+
+  .is-active
+    z-index: 1
+
+
+
+/*------------------------------------*\
+    Template: checkout
+\*------------------------------------*/
+.checkout
+  .__sidebar
+    width: 280px
+    float right
+    margin: 0 0 $spacer $spacer;
+
+  .__form-1
+    input
+      width: 380px
+
+  .__footer
+    margin: 30px 0
+
+
+.payment
+  &>header
+    hLine()
+    label
+      hLine()
+      margin-right: 15px
+
+
+.user-address
+  margin: $spacer 0;
+  jLine()
+
+  .__input--S
+    width: 65px;
+    
+  .__input--L
+    width: 190px;
+
+/*------------------------------------*\
+    Template: User
+\*------------------------------------*/
+.user
+
+  .__exit
+    @extend .link-decor-rvs
+    span
+      @extend .link-decor
+
+  .__header
+    hLine()
+    margin $spacer 0
+
+  .__input-row
+    jLine()
+
+    &>*
+      width: 31%
+
+    input
+      width: 100%;
+
+  h2
+    color: $brandColor;
+
+  .__purchase
+    margin: $spacer 0;
+    &>*
+      margin: ($spacer / 2) 0
+
+    ul
+      @extend .list-reset
+      display inline-block
+      hLine()
+
+    li:after
+      content ','
+
+    li:last-child:after
+      content '.'
+
+/*------------------------------------*\
+    Slider styles
+\*------------------------------------*/
+.bjqs{position:relative; list-style:none;padding:0;margin:0;overflow:hidden; display:none;}
+.bjqs-slide{position:absolute; display:none;}
+.bjqs-controls{list-style:none;margin:0;padding:0;z-index:9999;}
+.bjqs-controls.v-centered li a{position:absolute;}
+.bjqs-controls.v-centered li.bjqs-next a{right:0;}
+.bjqs-controls.v-centered li.bjqs-prev a{left:0;}
+.bjqs-markers{
+  absolute left bottom 15px
+  width:100%;
+}
+.bjqs-markers.h-centered{text-align: center;}
+.bjqs-markers li
+  display:inline-block;
+  margin: 0 7px;
+  &.active-marker a
+    background-color: #fff
+
+.bjqs-markers a
+  display: block;
+  hide-text()
+  size 14px
+  border-radius 50%
+  border 3px solid #fff
+
+.bjqs-caption{display:block;width:96%;margin:0;padding:2%;position:absolute;bottom:0;}
+
+
+
+/*------------------------------------*\
+    Custom select
+\*------------------------------------*/
+.selectBox-dropdown {
+  min-width: 150px;
+  position: relative;
+  text-decoration: none;
+  text-align: left;
+  outline: none;
+  vertical-align: middle;
+  display: inline-block;
+  cursor: default;
+  font-size: 14px
+}
+
+.selectBox-dropdown:focus .selectBox-arrow {
+  transform rotate(180deg)
+}
+
+.selectBox-dropdown .selectBox-label {
+  ellipsis()
+  height inherit
+  display table-cell
+  vertical-align middle
+  color: $titleColor
+}
+
+.selectBox-dropdown .selectBox-arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  size 20px 100%
+  img('selectbox-arrow.png')
+  transition transform .3s
+  transform rotate(0)
+}
+
+/* Dropdown menu */
+.selectBox-dropdown-menu {
+  position: absolute;
+  z-index: 99999;
+  max-height: 200px;
+  min-height: 1em;
+  border: solid 1px #BBB; /* should be the same border width as .selectBox-dropdown */
+  background: #FFF;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Inline control */
+.selectBox-inline {
+  min-width: 150px;
+  outline: none;
+  border: solid 1px #BBB;
+  background: #FFF;
+  display: inline-block;
+  overflow: auto;
+}
+
+.selectBox-inline:focus {
+  border-color: #666;
+}
+
+/* Options */
+.selectBox-options,
+.selectBox-options LI,
+.selectBox-options LI A {
+  list-style: none;
+  display: block;
+  cursor: default;
+  padding: 0;
+  margin: 0;
+}
+
+.selectBox-options.selectBox-options-top{
+  border-bottom:none;
+  margin-top:1px;
+}
+.selectBox-options.selectBox-options-bottom{
+  border-top:none;
+}
+
+.selectBox-options LI A {
+  ellipsis()
+  display block
+  padding: 5px 10px 3px
+  text-decoration: none
+  color: $titleColor
+}
+
+.selectBox-options LI.selectBox-hover A {
+  background-color: #EEE;
+}
+
+.selectBox-options LI.selectBox-disabled A {
+  color: #888;
+  background-color: transparent;
+}
+
+.selectBox-options LI.selectBox-selected A {
+  background-color: #C8DEF4;
+}
+
+.selectBox-options .selectBox-optgroup {
+  color: #666;
+  background: #EEE;
+  font-weight: bold;
+  line-height: 1.5;
+  padding: 0 .3em;
+  white-space: nowrap;
+}
+
+/* Disabled state */
+.selectBox.selectBox-disabled {
+  color: #888 !important;
+}
+
+.selectBox-dropdown.selectBox-disabled .selectBox-arrow {
+  opacity: .5;
+}
+
+.selectBox-inline.selectBox-disabled {
+  color: #888 !important;
+}
+
+.selectBox-inline.selectBox-disabled .selectBox-options A {
+  background-color: transparent !important;
+}
+
+
+
+
+/*	--------------------------------------------------
+	Reveal Modals
+	-------------------------------------------------- */
+
+.reveal-modal-bg {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  background: rgba(0,0,0,.4);
+  z-index: 100;
+  display: none;
+  top: 0;
+  left: 0;
+}
+
+.reveal-modal
+  visibility: hidden;
+  top: 200px;
+  left: 50%;
+  width: 580px;
+  margin-left: -(@width / 2)
+  background: #fff
+  position: absolute;
+  z-index: 101;
+
+  .__header
+    background-color: #e5e5e5;
+    padding: 10px 20px;
+    font-size: 17px
+
+  .__title
+    brand(30px)
+
+  label
+    display block
+    width: 225px;
+    margin-bottom: $spacer
+    input
+      width: 100%
+    [type=checkbox]
+      size 14px
+      margin-right: 5px
+
+
+  .__main
+    padding: 30px 55px 20px
+
+  .btn
+    width: 225px
+    text-align: center;
+    color $titleColor
+    font-size: 14px
+    font-weight: 700
+    
+  .btn-wrap
+    margin: $spacer 0;
+    text-align: center
+    
+  .btn-wrap--enter-modal
+    &>*
+      width: auto;
+    .btn
+      width: 150px
+
+  small
+    font-size: 12px
+    white-space nowrap
+
+    
+  
+
+.close-reveal-modal {
+  display none
+}
+/*
+
+NOTES
+
+Close button entity is &#215;
+
+Example markup
+
+<div id="myModal" class="reveal-modal">
+    <h2>Awesome. I have it.</h2>
+    <p class="lead">Your couch.  I it's mine.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ultrices aliquet placerat. Duis pulvinar orci et nisi euismod vitae tempus lorem consectetur. Duis at magna quis turpis mattis venenatis eget id diam. </p>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
+*/

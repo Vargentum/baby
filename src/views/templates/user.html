@@ -1,0 +1,141 @@
+include "common/bread-crumbs"
+
+<div class="user  wswg">
+  <header class="__header">
+    <h1>Личный кабинет</h1>
+    <a href="#" class="__exit"><span></span></a>
+  </header>
+
+  <section>
+    <header>
+      <h2>Личные данные:</h2>
+    </header>
+    <div class="__input-row">
+      <label>
+        <span>Имя</span>
+        <input type="text" class="is-error" />
+        <small class="is-error">Пример инпута с ошибкой</small>
+      </label>
+      <label>
+        <span>Фамилия</span>
+        <input type="text" required/>
+        <small class="is-error">Так же работает с :checked</small>
+      </label>
+      <label>
+        <span>Отчество</span>
+        <input type="text"/>
+      </label>
+    </div>
+    <div class="__input-row">
+      <label>
+        <span>Телефон</span>
+        <input type="tel"/>
+      </label>
+    </div>
+    <div class="__input-row">
+      <label>
+        <span>E-mail (логин)</span>
+        <input type="email"/>
+      </label>
+      <label>
+        <span>Пароль</span>
+        <input type="password"/>
+      </label>
+      <div>
+        <a href="#">Изменить пароль</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <header>
+      <h2>Адрес:</h2>
+    </header>
+
+    <address class="user-address">
+      <label>
+        <span>Город</span>
+        <input type="text" class="__input--L"/>
+      </label>
+      <label>
+        <span>Улица</span>
+        <input type="text" class="__input--L"/>
+      </label>
+      <label>
+        <span>Дом</span>
+        <input type="text" class="__input--S"/>
+      </label>
+      <label>
+        <span>Корпус</span>
+        <input type="text" class="__input--S"/>
+      </label>
+      <label>
+        <span>Строение</span>
+        <input type="text" class="__input--S"/>
+      </label>
+      <label>
+        <span>Кв./офис </span>
+        <input type="text" class="__input--S"/>
+      </label>
+    </address>
+
+    <footer>
+      <button type="submit" class="btn-3d-strict">Сохранить</button>
+    </footer>
+  </section>
+
+  <div class="is-shown">
+  <!--<div class="is-hidden">-->
+    <hr/>
+    <section>
+      <header>
+        <h2 class="__accent">Статистика</h2>
+      </header>
+
+      <ul class="ui-columnized-2  list-reset">
+        <li>Ожидает проверки: <a href="#" class="link-disabled">0</a></li>
+        <li>Ждём оплаты: <a href="#">3</a></li>
+        <li>Отменён: <a href="#">0</a></li>
+        <li>Выполняется: <a href="#">4</a></li>
+        <li>Доставляется: <a href="#">16</a></li>
+        <li>Доставлен: <a href="#">2606</a></li>
+        <li>Передан в доставку по Самаре: <a href="#">13</a></li>
+
+        <li>Отправлен на почту: <a href="#">2</a></li>
+        <li>Самовывоз: <a href="#">0</a></li>
+        <li>Бронирование: <a href="#">0</a></li>
+        <li>Клиенты: <a href="#">3564</a></li>
+        <li>Товары: <a href="#">3169</a></li>
+        <li>Отзывы: <a href="#">187</a></li>
+      </ul>
+
+    </section>
+  </div>
+
+  <div class="is-shown">
+  <!--<div class="is-hidden">-->
+    <hr/>
+    <section>
+      <header>
+        <h2>История покупок</h2>
+      </header>
+      <ul class="list-reset">
+        <li>
+          <article class="__purchase">
+            <header><b>Заказ №12345</b></header>
+            <p><small>Число:</small> 25 января 2014</p>
+            <div>
+              <small>Наименование заказа:</small>
+              <ul>
+                <li><a href="#">Ползунки Швеция - 1 шт</a></li>
+                <li><a href="#">Шапочка Швеция - 1 шт</a></li>
+              </ul>
+            </div>
+            <p><small>Общая сума заказа -</small> <b>12340 руб.</b></p>
+          </article>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+</div>

@@ -1,0 +1,192 @@
+/*------------------------------------*\
+  Shortcuts for pseudo-elements
+\*------------------------------------*/
+pb()
+  content: '';
+  display: block;
+  absolute: arguments
+
+pi($align = auto)
+  content: '';
+  display: inline-block;
+  vertical-align $align
+
+
+/*------------------------------------*\
+  Quick image insert
+\*------------------------------------*/
+img($imgName, $imgPos = '50% 50%', $imgRepeat = no-repeat)
+  background-image data($imgName)
+  background-repeat $imgRepeat
+  background-position unquote($imgPos)
+
+
+/*------------------------------------*\
+  Colors for states(hover, focus, etc)
+\*------------------------------------*/
+link-1($lmc-1 = $linkColor)
+  &,&:hover,&:focus,&:active,&:visited
+    color $lmc-1
+
+link-2($lmc-1 = $linkColor, $lmc-2 = $hoverLinkColor)
+  &,&:active,&:visited
+    color: $lmc-1
+  &:hover,&:focus
+    color: $lmc-2
+
+placeholder($color){
+  ::-webkit-input-placeholder {color: $color}
+  :-moz-placeholder           {color: $color}
+  ::-moz-placeholder          {color: $color}
+  :-ms-input-placeholder      {color: $color}
+}
+
+
+brand($size, $color = $brandColor)
+  font $size $brandFamily
+  color: $color
+
+title($size, $color = $titleColor)
+  font $size $brandFamily
+  color: $color
+
+/*------------------------------------*\
+    Layout helpers
+\*------------------------------------*/
+hLine($alignItems = baseline)
+  &>*
+    display: inline-block;
+    vertical-align: $alignItems
+
+
+jLine($vAlign = baseline)
+  .flexbox &
+    display flex
+    justify-content space-between
+    align-items $vAlign
+    if $vAlign == top
+      align-items flex-start
+    if $vAlign == bottom
+      align-items flex-end
+    if $vAlign == middle
+      align-items center
+  .no-flexbox &
+    hLine $vAlign
+    if $vAlign == stretch
+      hLine middle
+    text-align: justify
+    font-size: 1px
+    line-height: 0
+    text-justify: newspaper
+    zoom: 1
+    text-align-last: justify
+    &:after
+      pi()
+      height: 0
+      overflow: hidden
+      visibility: hidden
+      width: 100%
+    &>*
+      text-align: left
+      font-size: $baseFontSize
+      line-height: $baseLineHeight
+
+
+fLine($jc = space-between, $ai = center, $fd = column)
+  .flexbox &
+    display flex
+    justify-content $js
+    align-items $ai
+    flex-direction $fd
+
+
+vAlign($type = middle)
+  hLine $type
+  &:before
+    pi $type
+    size: 0 100%
+  //prevent bugs on small screens
+  white-space nowrap
+  &>*
+    white-space normal
+
+
+
+container($w = $baseMaxWidth)
+  max-width: $w
+  min-width $baseMinWidth
+  margin-left: auto
+  margin-right: auto
+  padding-left: 10px
+  padding-right: 10px
+
+
+/*------------------------------------*\
+    Responsive helpers
+\*------------------------------------*/
+respond-to($media)
+  if $media == ie10
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)
+      {block}
+  if $media == iphone
+    @media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+      {block}
+  if $media == ipad
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
+      {block}
+
+b-max()
+  condition = 'only screen and (max-width: %s)' % arguments[0]
+  @media condition
+    {block}
+
+b-min()
+  condition = 'only screen and (min-width: %s)' % arguments[0]
+  @media condition
+    {block}
+
+b-height()
+  condition = 'only screen and (max-height: %s)' % arguments[0]
+  @media condition
+    {block}
+/*
+b-min-max()
+  condition = 'only screen and (min-width: %s) and (max-width: %s)' % arguments[0] arguments[1]
+  @media condition
+    {block}
+*/
+fluid-width($width, $parentWidth = $baseMaxWidth)
+  width: $width / $parentWidth * 100%
+
+fluid-prop($prop, $val, $parentWidth)
+  {$prop}: $val / $parentWidth * 100%
+
+
+
+test($color = red)
+  border 1px solid $color !important
+
+ctr()
+  position absolute
+  {arguments[0]} 50%
+  if arguments[0] == all
+    left 50%
+    top 50%
+
+  .csstransforms &
+    if arguments[0] == top
+      transform translateY(-50%)
+    if arguments[0] == left
+      transform translateX(-50%)
+    if arguments[0] == all
+      transform translate(-50%)
+
+  .no-csstransforms &
+    if arguments[0] == top
+      margin-top -(arguments[1] / 2)
+    if arguments[0] == left
+      margin-left -(arguments[1] / 2)
+    if arguments[0] == all
+      margin-top -(arguments[2] / 2)
+      margin-left -(arguments[1] / 2)
+

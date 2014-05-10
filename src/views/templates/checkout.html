@@ -1,0 +1,136 @@
+<div class="checkout  wswg">
+
+  <section>
+    <header>
+      <h2>Информация для доставки товара</h2>
+    </header>
+
+    <aside class="__sidebar">
+      <h3>Просим вас обратить внимание...</h3>
+      <p>на то, что о способе оплаты заказа следует договариваться с нашим оператором в момент согласования деталей доставки.</p>
+      <p>Способы оплаты для физических лиц:</p>
+      <ul>
+        <li>Наличный расчет</li>
+        <li>Оплата банковской картой</li>
+        <li>Банковский перевод</li>
+      </ul>
+      <p>Способы оплаты для юридических лиц:</p>
+      <ul>
+        <li>Наличный расчет</li>
+        <li>Безналичный расчет</li>
+      </ul>
+    </aside>
+
+    <div class="__form-1">
+      <label>
+        <span>Ф.И.О.</span>
+        <input type="text" required/>
+      </label>
+      <label>
+        <span>Контактный телефон</span>
+        <input type="tel"/>
+      </label>
+      <label>
+        <span>Электронная почта</span>
+        <input type="email"/>
+      </label>
+    </div>
+
+    <section>
+      <header>
+        <h2>Получение товара</h2>
+      </header>
+      <ul class="list-reset">
+        <li>
+          <label class="accent-input-wrapper">
+            <input type="radio" name="delivery"/>
+            <span class="accent">Самовывоз</span>
+          </label>
+          Адрес получения: <br/>
+          Тут будет адрес пункта выдачи
+        </li>
+        <li>
+          <label class="accent-input-wrapper">
+            <input type="radio" name="delivery"/>
+            <span>Доставка курьером нашей компании</span>
+          </label>
+          <p><b>Укажите адрес доставки:</b> <a href="#" class="link-pseudo">Подставить данные из моего аккаунта</a></p>
+          <address class="user-address">
+            <label>
+              <span>Город</span>
+              <input type="text" class="__input--L"/>
+            </label>
+            <label>
+              <span>Улица</span>
+              <input type="text" class="__input--L"/>
+            </label>
+            <label>
+              <span>Дом</span>
+              <input type="text" class="__input--S"/>
+            </label>
+            <label>
+              <span>Корпус</span>
+              <input type="text" class="__input--S"/>
+            </label>
+            <label>
+              <span>Строение</span>
+              <input type="text" class="__input--S"/>
+            </label>
+            <label>
+              <span>Кв./офис </span>
+              <input type="text" class="__input--S"/>
+            </label>
+          </address>
+        </li>
+        <li>
+          <label class="accent-input-wrapper">
+            <input type="radio" name="delivery"/>
+            <span>Доставка транспортной компанией в любую точку России</span>
+          </label>
+          <p>В случае необходимости консультации по вопросам доставки . просим Вас связаться с нашим менеджером по телефону. Если же Вы самостоятельно определились с выбором перевозчика - просим указать всю информацию ниже.</p>
+        </li>
+      </ul>
+    </section>
+  </section>
+
+  <section>
+    <header>
+      <h2>Способ оплаты</h2>
+    </header>
+
+    <div class="payment">
+      <header>
+        <label>
+          <input type="radio" name="payment-type"/>
+          <span>Наличный расчет</span>
+        </label>
+        <label>
+          <input type="radio" name="payment-type"/>
+          <span>Оплата банковской картой</span>
+        </label>
+        <label>
+          <input type="radio" name="payment-type"/>
+          <span>Другие способы оплаты</span>
+        </label>
+      </header>
+      <ul class="list-reset  __main">
+        <li><img src="assets/img/payment-2.png" alt="Visa and Mastercard support"/></li>
+      </ul>
+      <footer><p><small>После нажатия “оформить заказ” вас переведут на платежный шлюз</small></p></footer>
+    </div>
+
+  </section>
+
+  <section>
+    <header>
+      <h2>Ваши комментарии к заказу</h2>
+    </header>
+    <textarea></textarea>
+    <footer><p>Наш менеджер свяжется с Вами для подтверждения заказа в ближайшее время!</p></footer>
+  </section>
+
+  <footer class="__footer">
+    <button type="submit" class="btn-3d">Оформить заказ</button>
+  </footer>
+
+</div>
