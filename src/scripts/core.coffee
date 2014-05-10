@@ -59,12 +59,13 @@ $ ->
 # slider
 $ ->
   elem = $('#slider')
-  elem.bjqs(
-    height: 250
-    width: 700
-    showcontrols: false
-    responsive: false
-  )
+  $(document).ready ->
+    elem.bjqs(
+      height: 250
+      width: 700
+      showcontrols: false
+      responsive: false
+    )
 
 # gallery
 $ ->

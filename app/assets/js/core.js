@@ -59,11 +59,13 @@
   $(function() {
     var elem;
     elem = $('#slider');
-    return elem.bjqs({
-      height: 250,
-      width: 700,
-      showcontrols: false,
-      responsive: false
+    return $(document).ready(function() {
+      return elem.bjqs({
+        height: 250,
+        width: 700,
+        showcontrols: false,
+        responsive: false
+      });
     });
   });
 
